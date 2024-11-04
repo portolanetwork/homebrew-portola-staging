@@ -5,17 +5,17 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/nomad10101/portola"
-  version "0.0.150"
+  version "0.0.151"
   depends_on :macos
 
-  url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.0.150/portola-staging-release_Darwin_x86_64.tar.gz"
-  sha256 "972048d5d0f0bb870053572edc3e2a23f749babc0728c58147cb7890db8280f3"
+  url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.0.151/portola-staging-release_Darwin_x86_64.tar.gz"
+  sha256 "345def88de777ae09027c9e6940df118c469576bf38379dff9e4e1730e38640a"
 
   def install
     bin.install "portd"
     bin.install "portctl"
-    prefix.install Dir["cmd/staging-portola.app/config/staging/resources"]
-    prefix.install "cmd/staging-portola.app/config/staging/deployment.yaml"
+    prefix.install Dir["cmd/portd/config/staging/resources"]
+    prefix.install "cmd/portd/config/staging/deployment.yaml"
   end
 
   on_arm do
