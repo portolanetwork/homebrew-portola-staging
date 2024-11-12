@@ -5,11 +5,11 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/nomad10101/portola"
-  version "0.0.170"
+  version "0.0.171"
   depends_on :macos
 
-  url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.0.170/portola-staging-release_Darwin_x86_64.tar.gz"
-  sha256 "f784284b2ed46bfb4a0442f858a346e42d56df47a0a06c7f2f177aabad049b47"
+  url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.0.171/portola-staging-release_Darwin_x86_64.tar.gz"
+  sha256 "54c198f6477396e6fd20ad06cf09d4cdf0c39ad708f1db4a14c5ab5fd5fb8107"
 
   def install
     bin.install "portd"
@@ -40,8 +40,8 @@ class StagingPortolaApp < Formula
     run [opt_bin/"portd", "service", "start"]
     environment_variables BREW_OPT_HOME: opt_prefix
     keep_alive true
-    log_path "#{var}/log/staging.portola.app/portola.out.log"
-    error_log_path "#{var}/log/staging.portola.app/portola.err.log"
+    log_path "#{var}/log/staging.portola.app/portd.out.log"
+    error_log_path "#{var}/log/staging.portola.app/portd.err.log"
     process_type :interactive
     working_dir opt_prefix
   end
