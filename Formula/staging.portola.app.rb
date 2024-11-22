@@ -5,11 +5,11 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/nomad10101/portola"
-  version "0.4.31"
+  version "0.4.33"
   depends_on :macos
 
-  url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.4.31/portola-staging_Darwin_x86_64.tar.gz"
-  sha256 "a0aace3f4c1d7a2c4711093e449c7d6c4ad66b8b4d8a3ae3d3f5359ca9f2c120"
+  url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.4.33/portola-staging_Darwin_x86_64.tar.gz"
+  sha256 "55f5b1510bb1127168b753d82822754a731f115afae2f482ea10f87aa6cb5099"
 
   def install
     bin.install "portd"
