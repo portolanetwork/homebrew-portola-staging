@@ -5,25 +5,17 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/nomad10101/portola"
-  version "0.4.35"
+  version "0.4.36"
   depends_on :macos
 
-  url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.4.35/portola-staging_Darwin_x86_64.tar.gz"
-  sha256 "5f05102ab66ac20753ddaf54142c1a08501fe84c1994c41de128b1092009ada3"
+  url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.4.36/portola-staging_Darwin_x86_64.tar.gz"
+  sha256 "ff3e260834eb01b9ec8fcd5f5cbd467a7e3d123ffa6ca37db22c7915f0d9d659"
 
   def install
-      bin.install "portd"
-      bin.install "portctl"
-      create_wrapper
-      prefix.install Dir["cmd/portd/config/staging/resources"]
-      prefix.install "cmd/portd/config/staging/deployment.yaml"
-
-      private def create_wrapper
-        wrapper = '#!/usr/bin/env bash
-        SCRIPTPATH=`dirname $0`
-        $SCRIPTPATH/portctl "$@"'
-        File.write('some-cli', wrapper)
-      end
+    bin.install "portd"
+    bin.install "portctl"
+    prefix.install Dir["cmd/portd/config/staging/resources"]
+    prefix.install "cmd/portd/config/staging/deployment.yaml"
   end
 
   on_arm do
@@ -47,13 +39,14 @@ class StagingPortolaApp < Formula
   service do
     run [opt_bin/"portd", "service", "start"]
     environment_variables(
-        "BREW_BIN" => "#{bin}",
-        "BREW_OPT_HOME" => "#{opt_prefix}",
-        "BREW_PREFIX" => "#{HOMEBREW_PREFIX}"
+      "BREW_APP_FORMULA_NAME" => "staging.portola.app",
+      "BREW_APP_BIN_PATH" => "#{bin}",
+      "BREW_APP_OPT_HOME" => "#{opt_prefix}",
+      "BREW_PREFIX" => "#{HOMEBREW_PREFIX}"
     )
     keep_alive true
-    log_path "#{var}/log/staging.portola.app/portd.out.log"
-    error_log_path "#{var}/log/staging.portola.app/portd.err.log"
+    log_path "#{var}/log/#{name}/portd.out.log"
+    error_log_path "#{var}/log/#{name}/portd.err.log"
     process_type :interactive
     working_dir opt_prefix
   end
