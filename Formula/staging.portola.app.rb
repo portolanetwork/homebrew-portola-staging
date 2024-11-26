@@ -14,6 +14,7 @@ class StagingPortolaApp < Formula
   def install
     bin.install "portd"
     bin.install "portctl"
+    bin.install "portctl_wrapper"
     prefix.install Dir["cmd/portd/config/staging/resources"]
     prefix.install "cmd/portd/config/staging/deployment.yaml"
       # Create a wrapper script for portctl to set environment variables
