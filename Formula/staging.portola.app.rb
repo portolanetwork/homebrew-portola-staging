@@ -37,6 +37,7 @@ class StagingPortolaApp < Formula
   end
 
   service do
+    name "staging.portola.app"
     run [opt_bin/"portd", "service", "start"]
     environment_variables(
       "BREW_BIN" => "#{bin}",
