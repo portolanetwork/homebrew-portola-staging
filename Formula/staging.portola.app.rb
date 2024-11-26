@@ -37,15 +37,14 @@ class StagingPortolaApp < Formula
   end
 
   service do
-    name "staging.portola.app"
     run [opt_bin/"portd", "service", "start"]
     environment_variables(
       "BREW_BIN" => "#{bin}",
       "BREW_OPT_HOME" => opt_prefix
     )
     keep_alive true
-    log_path "#{var}/log/#{name}/portd.out.log"
-    error_log_path "#{var}/log/#{name}/portd.err.log"
+    log_path "#{var}/log/staging.portola.app/portd.out.log"
+    error_log_path "#{var}/log/staging.portola.app/portd.err.log"
     process_type :interactive
     working_dir opt_prefix
   end
