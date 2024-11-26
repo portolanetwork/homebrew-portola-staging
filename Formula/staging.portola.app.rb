@@ -39,8 +39,8 @@ class StagingPortolaApp < Formula
   service do
     run [opt_bin/"portd", "service", "start"]
     environment_variables(
-      BREW_BIN: #{bin},
-      BREW_OPT_HOME: opt_prefix
+      "BREW_BIN" => "#{bin}",
+      "BREW_OPT_HOME" => opt_prefix
     )
     keep_alive true
     log_path "#{var}/log/#{name}/portd.out.log"
