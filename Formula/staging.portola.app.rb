@@ -12,11 +12,18 @@ class StagingPortolaApp < Formula
   sha256 "5f05102ab66ac20753ddaf54142c1a08501fe84c1994c41de128b1092009ada3"
 
   def install
-    bin.install "portd"
-    bin.install "portctl"
-    bin.install "portctl_wrapper"
-    prefix.install Dir["cmd/portd/config/staging/resources"]
-    prefix.install "cmd/portd/config/staging/deployment.yaml"
+      bin.install "portd"
+      bin.install "portctl"
+      create_wrapper
+      prefix.install Dir["cmd/portd/config/staging/resources"]
+      prefix.install "cmd/portd/config/staging/deployment.yaml"
+
+      private def create_wrapper
+        wrapper = '#!/usr/bin/env bash
+        SCRIPTPATH=`dirname $0`
+        $SCRIPTPATH/portctl "$@"'
+        File.write('some-cli', wrapper)
+      end
   end
 
   on_arm do
