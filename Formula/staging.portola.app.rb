@@ -40,7 +40,7 @@ class StagingPortolaApp < Formula
     run [opt_bin/"portd", "service", "start"]
     environment_variables(
         "BREW_BIN" => "#{bin}",
-        "BREW_OPT_HOME" => opt_prefix,
+        "BREW_OPT_HOME" => #{opt_prefix},
         "BREW_PREFIX" => "#{HOMEBREW_PREFIX}"
     )
     keep_alive true
