@@ -17,8 +17,6 @@ class StagingPortolaApp < Formula
     bin.install "portctl_wrapper"
     prefix.install Dir["cmd/portd/config/staging/resources"]
     prefix.install "cmd/portd/config/staging/deployment.yaml"
-      # Create a wrapper script for portctl to set environment variables
-    (echo '#!/bin/bash'; echo 'export MY_ENV_VAR=my_value'; echo 'exec "$@"') > #{bin}/portctl_wrapper        
   end
 
   on_arm do
