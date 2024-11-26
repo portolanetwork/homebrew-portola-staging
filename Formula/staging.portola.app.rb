@@ -5,26 +5,29 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/nomad10101/portola"
-  version "0.4.38"
+  version "0.4.39"
   depends_on :macos
 
-  url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.4.38/portola-staging_Darwin_x86_64.tar.gz"
-  sha256 "bcab2e92f6ff00238a1a4a52b7bb66c30af4c02a33985e48e69ce0b64af09d5f"
+  on_intel do
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.4.39/portola-staging_Darwin_x86_64.tar.gz"
+    sha256 "ea6a377f5c4e7afa07a6f4aa3b4ad2999d534da2826d901b16c5fb6f074285fe"
 
-  def install
-    bin.install "portd"
-    bin.install "portctl"
-    prefix.install Dir["cmd/portd/config/staging/resources"]
-    prefix.install "cmd/portd/config/staging/deployment.yaml"
+    def install
+      bin.install "portd"
+      bin.install "portctl"
+      prefix.install Dir["cmd/portd/config/staging/resources"]
+      prefix.install "cmd/portd/config/staging/deployment.yaml"
+    end
   end
-
   on_arm do
-    def caveats
-      <<~EOS
-        The darwin_arm64 architecture is not supported for the StagingPortolaApp
-        formula at this time. The darwin_amd64 binary may work in compatibility
-        mode, but it might not be fully supported.
-      EOS
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.4.39/portola-staging_Darwin_arm64.tar.gz"
+    sha256 "79cf3d95dad2c7a2bd199d8cda47eccd11d2c1e75bd3f25d8c2357d6a14a7138"
+
+    def install
+      bin.install "portd"
+      bin.install "portctl"
+      prefix.install Dir["cmd/portd/config/staging/resources"]
+      prefix.install "cmd/portd/config/staging/deployment.yaml"
     end
   end
 
