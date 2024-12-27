@@ -5,12 +5,12 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/nomad10101/portola"
-  version "0.5.31"
+  version "0.5.32"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.5.31/portola-staging_Darwin_x86_64.tar.gz"
-    sha256 "aa5835a6dce52d43b35d79e5094e47da2556f7d88405ef3941665eb6d110ff8f"
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.5.32/portola-staging_Darwin_x86_64.tar.gz"
+    sha256 "b141ccc343d47346e3ede4db5d421f7d127b21761609bb1a04c95c95cbf4b58b"
 
     def install
       bin.install "portd"
@@ -20,8 +20,8 @@ class StagingPortolaApp < Formula
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.5.31/portola-staging_Darwin_arm64.tar.gz"
-    sha256 "c0404935b0bf9b70058831c972f6206504671d72e65f82a19edfe9cb1a1f406c"
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.5.32/portola-staging_Darwin_arm64.tar.gz"
+    sha256 "0d59104866aec8b006e4bdcedb65743638ea93dbae225a8e362787ec28063185"
 
     def install
       bin.install "portd"
@@ -31,14 +31,11 @@ class StagingPortolaApp < Formula
     end
   end
 
-  def post_install
-    run [brew, "services", "restart", "staging.portola.app"]
-  end
-
   def caveats
     <<~EOS
       ****************************************************************
-      Listen up...
+      Installed Portola Staging Formula. To start the service run:
+        brew services start staging.portola.app
       ****************************************************************
     EOS
   end
