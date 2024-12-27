@@ -32,7 +32,7 @@ class StagingPortolaApp < Formula
   end
 
   def post_install
-    run "brew services restart staging.portola.app"
+    system "brew services restart staging.portola.app"    
   end
 
   def caveats
