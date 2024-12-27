@@ -31,10 +31,6 @@ class StagingPortolaApp < Formula
     end
   end
 
-  def post_install
-    system "brew services restart staging.portola.app"    
-  end
-
   def caveats
     <<~EOS
       ****************************************************************
