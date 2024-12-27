@@ -5,12 +5,12 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/nomad10101/portola"
-  version "0.5.30"
+  version "0.5.31"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.5.30/portola-staging_Darwin_x86_64.tar.gz"
-    sha256 "90ad62235ee08bdcc0f588ce3bdd2a384ed752d022b0840bde0be88aada37130"
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.5.31/portola-staging_Darwin_x86_64.tar.gz"
+    sha256 "aa5835a6dce52d43b35d79e5094e47da2556f7d88405ef3941665eb6d110ff8f"
 
     def install
       bin.install "portd"
@@ -20,8 +20,8 @@ class StagingPortolaApp < Formula
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.5.30/portola-staging_Darwin_arm64.tar.gz"
-    sha256 "1b60d09cc30fe49be538afa3adc1376eb3644de1e3df0fea3b30ae762a072e82"
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.5.31/portola-staging_Darwin_arm64.tar.gz"
+    sha256 "c0404935b0bf9b70058831c972f6206504671d72e65f82a19edfe9cb1a1f406c"
 
     def install
       bin.install "portd"
@@ -29,6 +29,10 @@ class StagingPortolaApp < Formula
       prefix.install Dir["cmd/portd/config/staging/resources"]
       prefix.install "cmd/portd/config/staging/deployment.yaml"
     end
+  end
+
+  def post_install
+    run [brew, "services", "restart", "staging.portola.app"]
   end
 
   def caveats
