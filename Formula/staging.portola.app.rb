@@ -51,7 +51,7 @@ class StagingPortolaApp < Formula
     keep_alive true
     log_path "#{var}/log/staging.portola.app/portd.out.log"
     error_log_path "#{var}/log/staging.portola.app/portd.err.log"
-    process_type :standard
+    process_type :interactive
     working_dir opt_prefix
   end
 end
