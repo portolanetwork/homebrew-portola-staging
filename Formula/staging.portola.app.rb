@@ -5,27 +5,27 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/portolanetwork/portola"
-  version "0.6.26"
+  version "0.6.27"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.6.26/portola-staging_Darwin_x86_64.tar.gz"
-    sha256 "85299481671dc063430c2f70acd6befdf39cc7b620aeb8c58ff5c7f17c6f318b"
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.6.27/portola-staging_Darwin_x86_64.tar.gz"
+    sha256 "64c0fe75bf8814d94ebc9841eab421175d21178a7bd6807415c493cfc55f01f3"
 
     def install
-      bin.install "portd"
-      bin.install "portctl"
+      bin.install "portd-staging"
+      bin.install "portctl-staging"
       prefix.install Dir["cmd/portd/deployment-assets/staging-usw1/resources"]
       prefix.install "cmd/portd/deployment-assets/staging-usw1/deployment.yaml"
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.6.26/portola-staging_Darwin_arm64.tar.gz"
-    sha256 "5809b2bfdf528be3588d5d13af4de8bb740cea7f22a389db4afac3a43f001fcb"
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.6.27/portola-staging_Darwin_arm64.tar.gz"
+    sha256 "7286890f1314a86a9617a7e88a963f24438287e15e4677f52ddbd2a542ec0276"
 
     def install
-      bin.install "portd"
-      bin.install "portctl"
+      bin.install "portd-staging"
+      bin.install "portctl-staging"
       prefix.install Dir["cmd/portd/deployment-assets/staging-usw1/resources"]
       prefix.install "cmd/portd/deployment-assets/staging-usw1/deployment.yaml"
     end
@@ -41,7 +41,7 @@ class StagingPortolaApp < Formula
   end
 
   service do
-    run [opt_bin/"portd", "service", "start"]
+    run [opt_bin/"portd-staging", "service", "start"]
     environment_variables(
       "BREW_APP_FORMULA_NAME" => "staging.portola.app",
       "BREW_APP_BIN_PATH" => "#{bin}",
