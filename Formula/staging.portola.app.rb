@@ -5,12 +5,12 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/portolanetwork/portola"
-  version "0.7.5"
+  version "0.7.7"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.5/portola-staging_Darwin_x86_64.tar.gz"
-    sha256 "183e080fbf8b7715d96f32b8aa82c9d008fc3b0d9c5390a2b6ad4e93577a8fe4"
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.7/portola-staging_Darwin_x86_64.tar.gz"
+    sha256 "1c572419244b4d9b939ff6a1a262e18697826ed71289a687e5a04dc713ff525f"
 
     def install
       bin.install "staged"
@@ -20,8 +20,8 @@ class StagingPortolaApp < Formula
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.5/portola-staging_Darwin_arm64.tar.gz"
-    sha256 "afd36b1505f98823f957737177bfaa44d8f943efb75f9393cd7ee3d013705678"
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.7/portola-staging_Darwin_arm64.tar.gz"
+    sha256 "e84d6ed793cc3449af858c3bf9a715f904cf04d217ab2d6c7bb7608cd32518b9"
 
     def install
       bin.install "staged"
@@ -43,7 +43,6 @@ class StagingPortolaApp < Formula
   service do
     run [opt_bin/"staged", "service", "start"]
     environment_variables(
-      "BREW_APP_FORMULA_NAME" => "staging.portola.app",
       "BREW_APP_BIN_PATH" => "#{bin}",
       "BREW_APP_OPT_HOME" => "#{opt_prefix}",
       "BREW_PREFIX" => "#{HOMEBREW_PREFIX}"
