@@ -5,12 +5,12 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/portolanetwork/portola"
-  version "0.7.93"
+  version "0.7.95"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.93/portola-staging_Darwin_x86_64.tar.gz"
-    sha256 "fbae66fa7e5e16e59d06bc88199480ee29a2b9edc674d98004c4d77a4b025951"
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.95/portola-staging_Darwin_x86_64.tar.gz"
+    sha256 "7b27833a9a685e72379da99c8eea994548dc228be7465142e19c6e4c12087b11"
 
     def install
       bin.install "staged"
@@ -20,8 +20,8 @@ class StagingPortolaApp < Formula
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.93/portola-staging_Darwin_arm64.tar.gz"
-    sha256 "614a1aa04c671c82269a7b4425d50a7a1b8377b0d980ebebfb506231a011eeab"
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.95/portola-staging_Darwin_arm64.tar.gz"
+    sha256 "db29ea057509682ddac836c5607d3705fde241f66ca99688c1f735ece1b1842b"
 
     def install
       bin.install "staged"
@@ -48,7 +48,6 @@ class StagingPortolaApp < Formula
       "BREW_PREFIX" => "#{HOMEBREW_PREFIX}"
     )
     keep_alive true
-    log_path "#{var}/log/staging.portola.app/portd.out.log"
     error_log_path "#{var}/log/staging.portola.app/portd.err.log"
     process_type :interactive
     working_dir opt_prefix
