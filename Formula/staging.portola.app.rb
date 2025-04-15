@@ -5,29 +5,26 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/portolanetwork/portola"
-  version "0.7.155"
+  version "0.7.162"
   depends_on :macos
 
-  if Hardware::CPU.intel?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.155/portola-staging_Darwin_x86_64.tar.gz"
-    sha256 "18f17dc5005dc2a97726c5028eead86a4e69e81eea289c3982e56077d7f40f56"
+  url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.162/portola-staging_Darwin_x86_64.tar.gz"
+  sha256 "a36e94be0f0aa9c4f33a92c846042a4f9d66ac5791eb3371cfaad1e4a1bbc3a6"
 
-    def install
-      bin.install "staged"
-      bin.install "stagectl"
-      prefix.install Dir["cmd/portd/deployment-assets/staging-usw1/resources"]
-      prefix.install "cmd/portd/deployment-assets/staging-usw1/deployment.yaml"
-    end
+  def install
+    bin.install "staged"
+    bin.install "stagectl"
+    prefix.install Dir["cmd/portd/deployment-assets/staging-usw1/resources"]
+    prefix.install "cmd/portd/deployment-assets/staging-usw1/deployment.yaml"
   end
-  if Hardware::CPU.arm?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.155/portola-staging_Darwin_arm64.tar.gz"
-    sha256 "6b51863b15ed3412e9a60f9e7c39a56c9ed9c72faacc0af8f87248b77be89a7c"
 
-    def install
-      bin.install "staged"
-      bin.install "stagectl"
-      prefix.install Dir["cmd/portd/deployment-assets/staging-usw1/resources"]
-      prefix.install "cmd/portd/deployment-assets/staging-usw1/deployment.yaml"
+  if Hardware::CPU.arm?
+    def caveats
+      <<~EOS
+        The darwin_arm64 architecture is not supported for the StagingPortolaApp
+        formula at this time. The darwin_amd64 binary may work in compatibility
+        mode, but it might not be fully supported.
+      EOS
     end
   end
 
