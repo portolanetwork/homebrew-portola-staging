@@ -5,12 +5,12 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/portolanetwork/portola"
-  version "0.7.271"
+  version "0.7.272"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.271/portola-staging_Darwin_x86_64.tar.gz"
-    sha256 "cb1dbe38098d240bae82089d84f554954b18457db18fbcf07d81df78766fa467"
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.272/portola-staging_Darwin_x86_64.tar.gz"
+    sha256 "ab8c39e7a5b74fc9110ddb72cb48bf1653d306ea5cf2e01a70dd6b1f10555857"
 
     def install
       bin.install "staged"
@@ -20,8 +20,8 @@ class StagingPortolaApp < Formula
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.271/portola-staging_Darwin_arm64.tar.gz"
-    sha256 "e7838cdeb781b3eddf8a259ea53c6d1c32d6436addb76d9ab889b93c95acd707"
+    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.272/portola-staging_Darwin_arm64.tar.gz"
+    sha256 "99f39b2c6e070f0d8e329c3be37a823eb08705ea6c1040c32a73168c5dc538b9"
 
     def install
       bin.install "staged"
