@@ -5,29 +5,53 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/portolanetwork/portola"
-  version "0.7.277"
-  depends_on :macos
+  version "0.7.288"
 
-  if Hardware::CPU.intel?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.277/portola-staging_Darwin_x86_64.tar.gz"
-    sha256 "df0141896fdc207abbbf9895df9bb1687d273271da7d71a7336dc27c2d789064"
+  on_macos do
+    if Hardware::CPU.intel?
+      url "https://github.com/portolanetwork/portola/releases/download/v0.7.288/portola-staging_Darwin_x86_64.tar.gz"
+      sha256 "05d923def4413557ad647f769d2c46adb61c2ec9774b81fc89deca29b487913d"
 
-    def install
-      bin.install "staged"
-      bin.install "stagectl"
-      prefix.install Dir["cmd/portd/deployment-assets/staging-usw1/resources"]
-      prefix.install "cmd/portd/deployment-assets/staging-usw1/deployment.yaml"
+      def install
+        bin.install "staged"
+        bin.install "stagectl"
+        prefix.install Dir["cmd/portd/deployment-assets/staging-usw1/resources"]
+        prefix.install "cmd/portd/deployment-assets/staging-usw1/deployment.yaml"
+      end
+    end
+    if Hardware::CPU.arm?
+      url "https://github.com/portolanetwork/portola/releases/download/v0.7.288/portola-staging_Darwin_arm64.tar.gz"
+      sha256 "db78a87e63d9ed8f4b74b30da27e1027057d1afa5d07b295b628d0c595fbc766"
+
+      def install
+        bin.install "staged"
+        bin.install "stagectl"
+        prefix.install Dir["cmd/portd/deployment-assets/staging-usw1/resources"]
+        prefix.install "cmd/portd/deployment-assets/staging-usw1/deployment.yaml"
+      end
     end
   end
-  if Hardware::CPU.arm?
-    url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.277/portola-staging_Darwin_arm64.tar.gz"
-    sha256 "8b7a55e5da4d3e9a62bb92692f0b65d0c0c2eaaf307219c8e3e011c352c0c3f2"
 
-    def install
-      bin.install "staged"
-      bin.install "stagectl"
-      prefix.install Dir["cmd/portd/deployment-assets/staging-usw1/resources"]
-      prefix.install "cmd/portd/deployment-assets/staging-usw1/deployment.yaml"
+  on_linux do
+    if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
+      url "https://github.com/portolanetwork/portola/releases/download/v0.7.288/portola-staging_Linux_x86_64.tar.gz"
+      sha256 "874a696bebe16e1967c2bba653dd2a876d8eea32aca593aa1f6b6efbb7f4b67a"
+      def install
+        bin.install "staged"
+        bin.install "stagectl"
+        prefix.install Dir["cmd/portd/deployment-assets/staging-usw1/resources"]
+        prefix.install "cmd/portd/deployment-assets/staging-usw1/deployment.yaml"
+      end
+    end
+    if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
+      url "https://github.com/portolanetwork/portola/releases/download/v0.7.288/portola-staging_Linux_arm64.tar.gz"
+      sha256 "66c273b354528a97aa2b86344033b48a1bc123ccc538a48fede4486c05d17fce"
+      def install
+        bin.install "staged"
+        bin.install "stagectl"
+        prefix.install Dir["cmd/portd/deployment-assets/staging-usw1/resources"]
+        prefix.install "cmd/portd/deployment-assets/staging-usw1/deployment.yaml"
+      end
     end
   end
 
