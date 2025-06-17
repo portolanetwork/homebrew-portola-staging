@@ -5,12 +5,12 @@
 class StagingPortolaApp < Formula
   desc ""
   homepage "https://github.com/portolanetwork/portola"
-  version "0.7.288"
+  version "0.7.289"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/portolanetwork/portola/releases/download/v0.7.288/portola-staging_Darwin_x86_64.tar.gz"
-      sha256 "05d923def4413557ad647f769d2c46adb61c2ec9774b81fc89deca29b487913d"
+      url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.289/portola-staging_Darwin_x86_64.tar.gz"
+      sha256 "4a572cb8857f292f8cf1997ac6931da3ca83ac7d6b9345a3bf7e41bd4e33ce74"
 
       def install
         bin.install "staged"
@@ -20,8 +20,8 @@ class StagingPortolaApp < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/portolanetwork/portola/releases/download/v0.7.288/portola-staging_Darwin_arm64.tar.gz"
-      sha256 "db78a87e63d9ed8f4b74b30da27e1027057d1afa5d07b295b628d0c595fbc766"
+      url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.289/portola-staging_Darwin_arm64.tar.gz"
+      sha256 "c4d3869b265ec4e80da7a5972f41d852bacefbf26aa87643517096a259a4e815"
 
       def install
         bin.install "staged"
@@ -34,8 +34,8 @@ class StagingPortolaApp < Formula
 
   on_linux do
     if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
-      url "https://github.com/portolanetwork/portola/releases/download/v0.7.288/portola-staging_Linux_x86_64.tar.gz"
-      sha256 "874a696bebe16e1967c2bba653dd2a876d8eea32aca593aa1f6b6efbb7f4b67a"
+      url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.289/portola-staging_Linux_x86_64.tar.gz"
+      sha256 "f475815dae1ecfd449b41ad923d0cf497b3c356a9f2a2d8301140b6f7492b7da"
       def install
         bin.install "staged"
         bin.install "stagectl"
@@ -44,8 +44,8 @@ class StagingPortolaApp < Formula
       end
     end
     if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
-      url "https://github.com/portolanetwork/portola/releases/download/v0.7.288/portola-staging_Linux_arm64.tar.gz"
-      sha256 "66c273b354528a97aa2b86344033b48a1bc123ccc538a48fede4486c05d17fce"
+      url "https://github.com/portolanetwork/portola-staging-release/releases/download/v0.7.289/portola-staging_Linux_arm64.tar.gz"
+      sha256 "c348c83dc4c94e9bde8264937a85f104eb67439bced3792676ba80d25b51a81c"
       def install
         bin.install "staged"
         bin.install "stagectl"
